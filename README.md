@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ALEN METAL - Güvenlikte Kalite, İşte Güç!
 
-## Getting Started
+ALEN METAL resmi web sitesi ve yönetim paneli. Metal güvenlik çözümleri, çit sistemleri, otomatik kapı ve dekoratif metal ürünleri.
 
-First, run the development server:
+## Teknolojiler
+
+- **Frontend:** Next.js 16 (App Router) + Tailwind CSS v4
+- **Backend:** Next.js API Routes + Prisma ORM
+- **Database:** PostgreSQL 16
+- **Auth:** NextAuth.js v5 (Credentials + JWT)
+- **Tasarım:** "Industrial Precision" dark theme
+
+## Kurulum
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`.env` dosyası oluşturun:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/alen_metal"
+NEXTAUTH_SECRET="rastgele-bir-string"
+NEXTAUTH_URL="http://localhost:3000"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+PostgreSQL Docker ile:
 
-## Learn More
+```bash
+docker run -d --name alen-metal-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=alen_metal -p 5432:5432 postgres:16
+```
 
-To learn more about Next.js, take a look at the following resources:
+Migration ve seed:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npx prisma migrate dev --name init
+npm run db:seed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Geliştirme
 
-## Deploy on Vercel
+```bash
+npm run dev        # http://localhost:3000
+npm run build      # Production build
+npx prisma studio  # Veritabanı GUI
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Admin Paneli
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`/admin/giris` — İçerik yönetimi, mesajlar, medya kütüphanesi, kullanıcı yönetimi.
+
+**Varsayılan giriş:** `admin@alenmetal.com` / `admin123`
+
+## Sayfalar
+
+| Sayfa | Açıklama |
+|-------|----------|
+| `/` | Ana sayfa |
+| `/hizmetler` | Hizmetler |
+| `/kurumsal` | Kurumsal bilgiler |
+| `/galeri` | Proje galerisi |
+| `/iletisim` | İletişim formu |
+
+## Proje Yapısı
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── admin/              # Yönetim paneli
+│   └── api/                # REST API
+├── components/
+│   ├── ui/                 # Navbar, Footer, GlassPanel
+│   ├── sections/           # Hero, ServicesGrid, Advantages
+│   └── admin/              # Sidebar
+└── lib/                    # Prisma, Auth, Utils
+prisma/                     # Schema ve migration'lar
+```
