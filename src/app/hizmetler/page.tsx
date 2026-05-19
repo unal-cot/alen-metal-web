@@ -10,6 +10,7 @@ interface Service {
   title: string;
   description: string;
   icon: string;
+  imageUrl: string | null;
   features: string | null;
   order: number;
   active: boolean;
@@ -45,9 +46,15 @@ export default function HizmetlerPage() {
                   : [];
                 return (
                   <GlassPanel key={s.id} className="hover:-translate-y-1 transition-transform">
-                    <span className="material-symbols-outlined text-4xl text-primary-container mb-4">
-                      {s.icon}
-                    </span>
+                    {s.imageUrl ? (
+                      <div className="w-full h-48 mb-4 rounded-lg overflow-hidden">
+                        <img src={s.imageUrl} alt={s.title} className="w-full h-full object-cover" />
+                      </div>
+                    ) : (
+                      <span className="material-symbols-outlined text-4xl text-primary-container mb-4">
+                        {s.icon}
+                      </span>
+                    )}
                     <h3 className="font-headline-lg text-headline-lg text-on-surface mb-3">{s.title}</h3>
                     <p className="font-body-md text-body-md text-on-surface-variant mb-4">{s.description}</p>
                     {featureList.length > 0 && (

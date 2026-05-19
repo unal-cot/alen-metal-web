@@ -20,8 +20,16 @@ export async function POST(req: NextRequest) {
   if (!file) return NextResponse.json({ error: "No file" }, { status: 400 });
 
   const buffer = Buffer.from(await file.arrayBuffer());
-  const filename = `${Date.now()}-${file.name}`;
-  const uploadsDir = path.join(process.cwd(), "public", "uploads");
+  const safeName = file.name
+    .replace(/ğ/g, "g").replace(/Ğ/g, "G")
+    .replace(/ü/g, "u").replace(/Ü/g, "U")
+    .replace(/ş/g, "s").replace(/Ş/g, "S")
+    .replace(/ı/g, "i").replace(/İ/g, "I")
+    .replace(/ö/g, "o").replace(/Ö/g, "O")
+    .replace(/ç/g, "c").replace(/Ç/g, "C")
+    .replace(/[^a-zA-Z0-9._-]/g, "_");
+  const filename = `${Date.now()}-${safeName}`;
+  const uploadsDir = path.join(process.cwd(), "storage", "uploads");
   await mkdir(uploadsDir, { recursive: true });
   await writeFile(path.join(uploadsDir, filename), buffer);
 
@@ -43,7 +51,7 @@ export async function DELETE(req: NextRequest) {
   const media = await prisma.media.delete({ where: { id } });
   try {
     const fs = await import("fs/promises");
-    await fs.unlink(path.join(process.cwd(), "public", media.url));
+    await fs.unlink(path.join(process.cwd(), "storage", media.url));
   } catch {}
   return NextResponse.json({ success: true });
 }

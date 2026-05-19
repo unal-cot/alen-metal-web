@@ -55,8 +55,8 @@ export function Footer() {
             {cfg.contact_name_2}: {cfg.phone_2}
           </div>
         )}
-        <Link href="/iletisim" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200 mt-4">Gizlilik Politikası</Link>
-        <Link href="/iletisim" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">Kullanım Koşulları</Link>
+        <Link href="/gizlilik-politikasi" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200 mt-4">Gizlilik Politikası</Link>
+        <Link href="/kullanim-kosullari" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">Kullanım Koşulları</Link>
       </div>
     </footer>
   );
