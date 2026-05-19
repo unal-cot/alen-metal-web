@@ -14,11 +14,15 @@ async function main() {
 
   // Services
   const services = [
-    { title: "Tel Çit", description: "Dayanıklı ve uzun ömürlü tel çit sistemleri ile alanlarınızı güvence altına alıyoruz.", icon: "fence", order: 0 },
-    { title: "Panel Çit", description: "Estetik ve sağlam panel çit sistemleri ile güvenliği en üst seviyeye çıkarıyoruz.", icon: "grid_on", order: 1 },
-    { title: "Çim Çit", description: "Doğal görünüm sunan çim çit sistemleri ile estetik ve mahremiyet sağlar.", icon: "grass", order: 2 },
-    { title: "Otomatik Kapı Sistemleri", description: "Son teknoloji otomatik kapı sistemlerimizle güvenlik ve konforu bir arada sunuyoruz.", icon: "door_sliding", order: 3 },
-    { title: "Dekoratif Metal Ürünleri", description: "El işçiliği ve modern üretim tekniklerini birleştirerek benzersiz dekoratif metal ürünler tasarlıyoruz.", icon: "architecture", order: 4 },
+    { title: "Tel Çit", description: "Dayanıklı ve uzun ömürlü tel çit sistemleri ile alanlarınızı güvence altına alıyoruz. Galvanizli ve PVC kaplamalı seçeneklerimizle her türlü arazi ve iklim koşuluna uygun çözümler sunuyoruz.", icon: "fence", features: "Yüksek dayanıklılık, Korozyon direnci, Kolay montaj, Ekonomik fiyat", order: 0 },
+    { title: "Panel Çit", description: "Estetik ve sağlam panel çit sistemleri ile güvenliği en üst seviyeye çıkarıyoruz. Modern tasarımı ve üstün mukavemetiyle panel çitlerimiz, endüstriyel tesislerden toplu konut projelerine kadar geniş bir kullanım alanına sahiptir.", icon: "grid_on", features: "Modern estetik, Yüksek güvenlik, Uzun ömür, Bakım gerektirmez", order: 1 },
+    { title: "Çim Çit", description: "Doğal görünüm sunan çim çit sistemleri ile estetik ve mahremiyet sağlar. Çevre dostu malzemelerden üretilen çim çitlerimiz, bahçe ve peyzaj alanlarında doğal bir görünüm elde etmenizi sağlar.", icon: "grass", features: "Doğal görünüm, Mahremiyet, Çevre dostu, Kolay bakım", order: 2 },
+    { title: "Otomatik Kapı Sistemleri", description: "Son teknoloji otomatik kapı sistemlerimizle güvenlik ve konforu bir arada sunuyoruz. Kayar kapı, bahçe kapısı ve endüstriyel kapı çözümlerimizle ihtiyacınıza uygun otomasyon sağlıyoruz.", icon: "door_sliding", features: "Uzaktan kumanda, Fotosel güvenlik, Sessiz çalışma, Acil durum manuel açma", order: 3 },
+    { title: "Dekoratif Metal Ürünleri", description: "El işçiliği ve modern üretim tekniklerini birleştirerek benzersiz dekoratif metal ürünler tasarlıyoruz. Korkuluk, balkon ve merdiven sistemlerinde estetik ve dayanıklılığı bir arada sunuyoruz.", icon: "architecture", features: "Özel tasarım, El işçiliği, Premium malzeme, Montaj dahil", order: 4 },
+    { title: "İnşaat Çevre Kapama", description: "Şantiye ve inşaat alanlarınız için güvenli ve dayanıklı çevre kapama sistemleri kuruyoruz. Hızlı kurulum ve ekonomik çözümlerle projelerinizi güvence altına alıyoruz.", icon: "construction", features: "Hızlı kurulum, Dayanıklı malzeme, Ekonomik fiyat, Projeye özel çözüm", order: 5 },
+    { title: "Ferforje", description: "El işçiliğiyle üretilen ferforje ürünlerimizle mekanlarınıza estetik ve güvenlik katıyoruz. Korkuluk, pencere demiri, bahçe kapısı ve özel tasarım ferforje uygulamaları.", icon: "handyman", features: "El işçiliği, Özel tasarım, Anti-korozyon, Uzun ömürlü", order: 6 },
+    { title: "Kaynak", description: "Profesyonel kaynak hizmetlerimizle metal yapılarınızı güçlendiriyoruz. Demir, çelik ve alüminyum kaynak işlemlerinde uzman ekibimizle hizmetinizdeyiz.", icon: "build", features: "Sertifikalı kaynakçı, Her tür metal, Yerinde servis, Kalite garantisi", order: 7 },
+    { title: "Desenli Çit", description: "Dekoratif desenli çit sistemlerimizle güvenliği estetikle buluşturuyoruz. Farklı desen seçenekleriyle mekanlarınıza özgün bir görünüm kazandırıyoruz.", icon: "grid_view", features: "Dekoratif tasarım, Yüksek dayanıklılık, Çeşitli desen seçeneği, Kolay montaj", order: 8 },
   ];
   for (const s of services) {
     await prisma.service.create({ data: s });
@@ -51,10 +55,17 @@ async function main() {
   const configs = [
     { key: "tagline", value: "Güvenlikte Kalite, İşte Güç!" },
     { key: "hero_description", value: "Metal gücümüz ve tecrübemizle, yaşam alanlarınız için güvenli çözümler üretiyoruz. Dayanıklılık ve estetiği bir araya getiren premium uygulamalar." },
+    { key: "hero_image_url", value: "https://lh3.googleusercontent.com/aida-public/AB6AXuA353CKxl5bI0gk8uvabHaHTch4K72ByMLEZtAsIsooGwaJlqIdn0iAugUYqzeu1s9Y1CgQd86iEsk2o7OMgSVuI02EbbQHe-JKzwvBRrYPWffROa7a05dTNn1jX_b6djUWun45oYYy2HCLUMkF7hWgimsbYP9nSVr-9S5l6JsUCRts9RxuM_1-QAgJGtjYlwnNf1N0yTxGN0P7aiRb6ax4NsZphF268zOcUJdGU0YYp43kQahbklMRbzovTem12ZjOxKkJt0DKYSEL" },
+    { key: "contact_name_1", value: "Ali Berkant Karabulut" },
     { key: "phone_1", value: "0530 845 1754" },
+    { key: "contact_name_2", value: "Engin TOPGÜL" },
     { key: "phone_2", value: "0541 204 2908" },
     { key: "footer_description", value: "Güçlü Yapılar, Güvenli Yarınlar." },
+    { key: "about_intro", value: "ALEN METAL olarak, metal sektöründe yılların getirdiği tecrübe ile güvenlik ve dayanıklılıkta kalite standardını belirliyoruz." },
+    { key: "mission_text", value: "Müşterilerimize en kaliteli metal ürünlerini ve güvenlik çözümlerini sunarak, yaşam alanlarını daha güvenli ve estetik hale getirmek. Teknoloji ve işçiliği birleştirerek sektörde öncü olmak." },
+    { key: "vision_text", value: "Türkiye'nin lider metal ve güvenlik sistemleri markası olarak, uluslararası standartlarda üretim yapmak ve global pazarda söz sahibi olmak. Sürdürülebilir büyüme ile sektöre yön vermek." },
     { key: "address", value: "İstanbul, Türkiye" },
+    { key: "map_query", value: "İstanbul, Türkiye" },
     { key: "copyright", value: "© 2024 Alen Metal. Güçlü Yapılar, Güvenli Yarınlar." },
   ];
   for (const c of configs) {

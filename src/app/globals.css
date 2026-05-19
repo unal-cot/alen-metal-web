@@ -112,3 +112,8 @@
 .glow-hover:hover {
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}

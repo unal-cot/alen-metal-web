@@ -1,14 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { GlassPanel } from "@/components/ui/GlassPanel";
+
+interface SiteConfig {
+  contact_name_1?: string;
+  phone_1?: string;
+  contact_name_2?: string;
+  phone_2?: string;
+  address?: string;
+  map_query?: string;
+}
 
 export default function IletisimPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [config, setConfig] = useState<SiteConfig>({});
+
+  useEffect(() => {
+    fetch("/api/site-config").then((r) => r.json()).then(setConfig);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +36,9 @@ export default function IletisimPage() {
     setSubmitted(true);
     setForm({ name: "", email: "", phone: "", message: "" });
   };
+
+  const mapQuery = config.map_query || config.address || "İstanbul, Türkiye";
+  const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed&z=14`;
 
   return (
     <>
@@ -107,33 +124,51 @@ export default function IletisimPage() {
               )}
             </div>
             <div className="space-y-6">
-              <GlassPanel>
-                <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-2xl text-primary-container">person</span>
-                  <div>
-                    <div className="font-label-bold text-label-bold text-on-surface">Ali Berkant Karabulut</div>
-                    <a href="tel:05308451754" className="font-body-md text-body-md text-primary-container hover:underline">0530 845 1754</a>
+              {config.contact_name_1 && config.phone_1 && (
+                <GlassPanel>
+                  <div className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-2xl text-primary-container">person</span>
+                    <div>
+                      <div className="font-label-bold text-label-bold text-on-surface">{config.contact_name_1}</div>
+                      <a href={`tel:${config.phone_1.replace(/\s/g, "")}`} className="font-body-md text-body-md text-primary-container hover:underline">{config.phone_1}</a>
+                    </div>
                   </div>
-                </div>
-              </GlassPanel>
-              <GlassPanel>
-                <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-2xl text-primary-container">person</span>
-                  <div>
-                    <div className="font-label-bold text-label-bold text-on-surface">Engin TOPGÜL</div>
-                    <a href="tel:05412042908" className="font-body-md text-body-md text-primary-container hover:underline">0541 204 2908</a>
+                </GlassPanel>
+              )}
+              {config.contact_name_2 && config.phone_2 && (
+                <GlassPanel>
+                  <div className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-2xl text-primary-container">person</span>
+                    <div>
+                      <div className="font-label-bold text-label-bold text-on-surface">{config.contact_name_2}</div>
+                      <a href={`tel:${config.phone_2.replace(/\s/g, "")}`} className="font-body-md text-body-md text-primary-container hover:underline">{config.phone_2}</a>
+                    </div>
                   </div>
-                </div>
-              </GlassPanel>
-              <GlassPanel>
-                <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-2xl text-primary-container">location_on</span>
-                  <div>
-                    <div className="font-label-bold text-label-bold text-on-surface">Adres</div>
-                    <div className="font-body-md text-body-md text-on-surface-variant">İstanbul, Türkiye</div>
+                </GlassPanel>
+              )}
+              {config.address && (
+                <GlassPanel>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="material-symbols-outlined text-2xl text-primary-container">location_on</span>
+                    <div>
+                      <div className="font-label-bold text-label-bold text-on-surface">Adres</div>
+                      <div className="font-body-md text-body-md text-on-surface-variant">{config.address}</div>
+                    </div>
                   </div>
-                </div>
-              </GlassPanel>
+                  <div className="rounded-lg overflow-hidden border border-outline-variant/30 h-64">
+                    <iframe
+                      src={mapEmbedUrl}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="ALEN METAL Konum"
+                    />
+                  </div>
+                </GlassPanel>
+              )}
             </div>
           </div>
         </div>

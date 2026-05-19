@@ -38,12 +38,50 @@ export default function AyarlarAdminPage() {
           <textarea value={config.hero_description || ""} onChange={(e) => set("hero_description", e.target.value)} rows={3}
             className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none resize-none" />
         </div>
+        <div>
+          <label className="font-label-bold text-label-bold text-on-surface block mb-2">Hero Görsel URL</label>
+          <input value={config.hero_image_url || ""} onChange={(e) => set("hero_image_url", e.target.value)}
+            className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none" />
+        </div>
+        <hr className="border-outline-variant/30" />
+        <h2 className="font-headline-lg text-headline-lg text-on-surface">Kurumsal Sayfa</h2>
+        <div>
+          <label className="font-label-bold text-label-bold text-on-surface block mb-2">Giriş Metni</label>
+          <textarea value={config.about_intro || ""} onChange={(e) => set("about_intro", e.target.value)} rows={2}
+            className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none resize-none" />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="font-label-bold text-label-bold text-on-surface block mb-2">Misyon Metni</label>
+            <textarea value={config.mission_text || ""} onChange={(e) => set("mission_text", e.target.value)} rows={4}
+              className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none resize-none" />
+          </div>
+          <div>
+            <label className="font-label-bold text-label-bold text-on-surface block mb-2">Vizyon Metni</label>
+            <textarea value={config.vision_text || ""} onChange={(e) => set("vision_text", e.target.value)} rows={4}
+              className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none resize-none" />
+          </div>
+        </div>
+        <hr className="border-outline-variant/30" />
+        <h2 className="font-headline-lg text-headline-lg text-on-surface">İletişim Bilgileri</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="font-label-bold text-label-bold text-on-surface block mb-2">İletişim Kişi 1</label>
+            <input value={config.contact_name_1 || ""} onChange={(e) => set("contact_name_1", e.target.value)}
+              className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none"
+              placeholder="Ali Berkant Karabulut" />
+          </div>
           <div>
             <label className="font-label-bold text-label-bold text-on-surface block mb-2">Telefon 1</label>
             <input value={config.phone_1 || ""} onChange={(e) => set("phone_1", e.target.value)}
               className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none"
               placeholder="0530 845 1754" />
+          </div>
+          <div>
+            <label className="font-label-bold text-label-bold text-on-surface block mb-2">İletişim Kişi 2</label>
+            <input value={config.contact_name_2 || ""} onChange={(e) => set("contact_name_2", e.target.value)}
+              className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none"
+              placeholder="Engin TOPGÜL" />
           </div>
           <div>
             <label className="font-label-bold text-label-bold text-on-surface block mb-2">Telefon 2</label>
@@ -58,10 +96,17 @@ export default function AyarlarAdminPage() {
             className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none resize-none" />
         </div>
         <div>
-          <label className="font-label-bold text-label-bold text-on-surface block mb-2">Adres</label>
+          <label className="font-label-bold text-label-bold text-on-surface block mb-2">Adres (Görünen)</label>
           <input value={config.address || ""} onChange={(e) => set("address", e.target.value)}
             className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none"
             placeholder="İstanbul, Türkiye" />
+        </div>
+        <div>
+          <label className="font-label-bold text-label-bold text-on-surface block mb-2">Harita Konum (Google Maps araması)</label>
+          <input value={config.map_query || ""} onChange={(e) => set("map_query", e.target.value)}
+            className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none"
+            placeholder="İstanbul, Beşiktaş" />
+          <p className="font-body-md text-body-md text-on-surface-variant mt-1">Google Maps'te aranacak konum. Tam adres veya ilçe/semt yazabilirsiniz.</p>
         </div>
         <div>
           <label className="font-label-bold text-label-bold text-on-surface block mb-2">Copyright Metni</label>

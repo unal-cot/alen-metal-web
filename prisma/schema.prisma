@@ -22,20 +22,31 @@ model Service {
   description String?
   icon        String
   imageUrl    String?
+  features    String?
   order       Int     @default(0)
   active      Boolean @default(true)
   createdAt   DateTime @default(now())
 }
 
 model Project {
-  id          String   @id @default(cuid())
+  id          String         @id @default(cuid())
   title       String
   description String?
   imageUrl    String?
   category    String
   completedAt DateTime?
-  active      Boolean  @default(true)
-  createdAt   DateTime @default(now())
+  active      Boolean        @default(true)
+  createdAt   DateTime       @default(now())
+  images      ProjectImage[]
+}
+
+model ProjectImage {
+  id        String   @id @default(cuid())
+  url       String
+  order     Int      @default(0)
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
 
 model Stat {

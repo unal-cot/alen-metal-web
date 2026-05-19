@@ -1,8 +1,23 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 
+interface AboutConfig {
+  about_intro?: string;
+  mission_text?: string;
+  vision_text?: string;
+}
+
 export default function KurumsalPage() {
+  const [cfg, setCfg] = useState<AboutConfig>({});
+
+  useEffect(() => {
+    fetch("/api/site-config").then((r) => r.json()).then(setCfg);
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -10,7 +25,7 @@ export default function KurumsalPage() {
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <h1 className="font-display-lg text-display-lg text-primary-container mb-4">Kurumsal</h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl">
-            ALEN METAL olarak, metal sektöründe yılların getirdiği tecrübe ile güvenlik ve dayanıklılıkta kalite standardını belirliyoruz.
+            {cfg.about_intro || "ALEN METAL olarak, metal sektöründe yılların getirdiği tecrübe ile güvenlik ve dayanıklılıkta kalite standardını belirliyoruz."}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-20">
@@ -18,14 +33,14 @@ export default function KurumsalPage() {
               <span className="material-symbols-outlined text-4xl text-primary-container mb-4">visibility</span>
               <h2 className="font-headline-lg text-headline-lg text-on-surface mb-3">Misyonumuz</h2>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                Müşterilerimize en kaliteli metal ürünlerini ve güvenlik çözümlerini sunarak, yaşam alanlarını daha güvenli ve estetik hale getirmek. Teknoloji ve işçiliği birleştirerek sektörde öncü olmak.
+                {cfg.mission_text || "Müşterilerimize en kaliteli metal ürünlerini ve güvenlik çözümlerini sunarak, yaşam alanlarını daha güvenli ve estetik hale getirmek. Teknoloji ve işçiliği birleştirerek sektörde öncü olmak."}
               </p>
             </GlassPanel>
             <GlassPanel>
               <span className="material-symbols-outlined text-4xl text-primary-container mb-4">flag</span>
               <h2 className="font-headline-lg text-headline-lg text-on-surface mb-3">Vizyonumuz</h2>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                Türkiye&apos;nin lider metal ve güvenlik sistemleri markası olarak, uluslararası standartlarda üretim yapmak ve global pazarda söz sahibi olmak. Sürdürülebilir büyüme ile sektöre yön vermek.
+                {cfg.vision_text || "Türkiye'nin lider metal ve güvenlik sistemleri markası olarak, uluslararası standartlarda üretim yapmak ve global pazarda söz sahibi olmak. Sürdürülebilir büyüme ile sektöre yön vermek."}
               </p>
             </GlassPanel>
           </div>

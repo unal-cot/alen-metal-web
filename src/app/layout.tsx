@@ -18,6 +18,24 @@ export const metadata: Metadata = {
   title: "ALEN METAL - Güvenlikte Kalite, İşte Güç!",
   description:
     "Metal gücümüz ve tecrübemizle, yaşam alanlarınız için güvenli çözümler üretiyoruz. Dayanıklılık ve estetiği bir araya getiren premium uygulamalar.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+  openGraph: {
+    title: "ALEN METAL - Güvenlikte Kalite, İşte Güç!",
+    description:
+      "Metal gücümüz ve tecrübemizle, yaşam alanlarınız için güvenli çözümler üretiyoruz.",
+    type: "website",
+    locale: "tr_TR",
+    siteName: "ALEN METAL",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ALEN METAL - Güvenlikte Kalite, İşte Güç!",
+    description:
+      "Metal gücümüz ve tecrübemizle, yaşam alanlarınız için güvenli çözümler üretiyoruz.",
+  },
 };
 
 export default function RootLayout({

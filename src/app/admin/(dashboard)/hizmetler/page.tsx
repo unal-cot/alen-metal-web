@@ -8,6 +8,7 @@ interface Service {
   description: string;
   icon: string;
   imageUrl: string;
+  features: string;
   order: number;
   active: boolean;
 }
@@ -63,6 +64,8 @@ export default function HizmetlerAdminPage() {
             className="bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none" />
         </div>
         <textarea placeholder="Açıklama" value={form.description || ""} onChange={(e) => setForm({ ...form, description: e.target.value })}
+          rows={2} className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none resize-none" />
+        <textarea placeholder="Özellikler (virgülle ayırın)" value={form.features || ""} onChange={(e) => setForm({ ...form, features: e.target.value })}
           rows={2} className="w-full bg-surface-container border border-outline-variant rounded px-4 py-2 text-on-surface focus:border-primary-container focus:outline-none resize-none" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <input placeholder="Görsel URL" value={form.imageUrl || ""} onChange={(e) => setForm({ ...form, imageUrl: e.target.value })}
