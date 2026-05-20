@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Advantages } from "@/components/sections/Advantages";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { ProjectsGallery } from "@/components/sections/ProjectsGallery";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
         <Advantages />
         <ServicesGrid />
         <ProjectsGallery />
+        <ContactSection />
       </main>
       <Footer />
     </>

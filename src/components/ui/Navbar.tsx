@@ -9,7 +9,6 @@ const links = [
   { href: "/hizmetler", label: "Hizmetlerimiz" },
   { href: "/kurumsal", label: "Kurumsal" },
   { href: "/galeri", label: "Galeri" },
-  { href: "/iletisim", label: "İletişim" },
 ];
 
 const LOGO_VERSION = "?v=5";
@@ -60,7 +59,7 @@ export function Navbar() {
           })}
         </div>
         <div>
-          <Link href="/iletisim" className="bg-primary-container text-on-primary-container font-label-bold text-label-bold px-6 py-3 rounded hover:bg-primary-container/90 transition-colors shadow-lg shadow-black/20 glow-hover">
+          <Link href="/#iletisim" className="bg-primary-container text-on-primary-container font-label-bold text-label-bold px-6 py-3 rounded hover:bg-primary-container/90 transition-colors shadow-lg shadow-black/20 glow-hover">
             Teklif Al
           </Link>
         </div>
@@ -113,7 +112,7 @@ export function Navbar() {
               })}
             </div>
             <Link
-              href="/iletisim"
+              href="/#iletisim"
               onClick={() => setMobileOpen(false)}
               className="bg-primary-container text-on-primary-container font-label-bold text-label-bold px-6 py-4 rounded hover:bg-primary-container/90 transition-all shadow-lg shadow-black/20 text-center mt-4"
             >

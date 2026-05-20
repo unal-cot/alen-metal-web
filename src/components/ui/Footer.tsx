@@ -6,10 +6,6 @@ import Link from "next/link";
 interface SiteConfig {
   footer_description?: string;
   copyright?: string;
-  contact_name_1?: string;
-  phone_1?: string;
-  contact_name_2?: string;
-  phone_2?: string;
 }
 
 export function Footer() {
@@ -38,24 +34,13 @@ export function Footer() {
       <div className="flex flex-col gap-4">
         <h4 className="font-headline-lg text-headline-lg text-on-surface text-xl">Hızlı Linkler</h4>
         <Link href="/hizmetler" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">Hizmetlerimiz</Link>
-        <Link href="/hizmetler" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">Panel Çit</Link>
-        <Link href="/hizmetler" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">Tel Çit</Link>
+        <Link href="/kurumsal" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">Kurumsal</Link>
+        <Link href="/galeri" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">Galeri</Link>
+        <Link href="/#iletisim" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">İletişim</Link>
       </div>
       <div className="flex flex-col gap-4">
-        <h4 className="font-headline-lg text-headline-lg text-on-surface text-xl">İletişim</h4>
-        {cfg.contact_name_1 && cfg.phone_1 && (
-          <div className="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
-            <span className="material-symbols-outlined text-primary-container">person</span>
-            {cfg.contact_name_1}: {cfg.phone_1}
-          </div>
-        )}
-        {cfg.contact_name_2 && cfg.phone_2 && (
-          <div className="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
-            <span className="material-symbols-outlined text-primary-container">person</span>
-            {cfg.contact_name_2}: {cfg.phone_2}
-          </div>
-        )}
-        <Link href="/gizlilik-politikasi" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200 mt-4">Gizlilik Politikası</Link>
+        <h4 className="font-headline-lg text-headline-lg text-on-surface text-xl">Yasal</h4>
+        <Link href="/gizlilik-politikasi" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">Gizlilik Politikası</Link>
         <Link href="/kullanim-kosullari" className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container hover:translate-x-1 transition-all duration-200">Kullanım Koşulları</Link>
       </div>
     </footer>
